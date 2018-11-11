@@ -47,8 +47,6 @@ for line in lines:
     images.extend([image_centre, image_left, image_right])
     steering_angles.extend([steering_centre, steering_left, steering_right])
 
-cv2.imwrite('sample1.jpg',images[20]) 
-
 # Augment data by flipping images and changing sign of steering
 augmented_images, augmented_steering_angles = [], []
 for image,steering_angle in zip(images, steering_angles):
@@ -56,9 +54,6 @@ for image,steering_angle in zip(images, steering_angles):
     augmented_steering_angles.append(steering_angle)
     augmented_images.append(cv2.flip(image,1))
     augmented_steering_angles.append(steering_angle*-1.0)
-
-# sample flipped image
-cv2.imwrite('sample2.jpg',augmented_images[24128]) 
 
 # Convert images and steering_angles to numpy arrays for Keras to accept as input    
 X_train = np.array(augmented_images)
