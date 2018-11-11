@@ -102,7 +102,7 @@ model.compile(loss='mse',optimizer='adam')
 # Train model
 batch_size = 24
 model.fit_generator(train_generator, steps_per_epoch=(epoch_samples_train//batch_size),
-                    validation_data=validation_generator,validation_steps=(epoch_samples_valid//batch_size), epochs=4, verbose = 1)
+                   validation_data=validation_generator,validation_steps=(epoch_samples_valid//batch_size), epochs=3, verbose = 1)
 
 # Save model
 model.save('model_gen.h5')
