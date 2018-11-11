@@ -11,12 +11,11 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./images/Original.jpg "Original Model Training"
-[image2]: ./images/model.jpg "Grayscaling"
-[image3]: ./examples/placeholder_small.png "Recovery Image"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
-[image7]: ./examples/placeholder_small.png "Flipped Image"
+[image2]: ./images/model.jpg "Model training"
+[image3]: ./images/architecture.jpg "Model Architecture"
+[image4]: ./images/sample.jpg "Sample Training Image"
+[image5]: ./images/sample_flipped.jpg "Sample Flipped Image"
+[image6]: ./images/model_gen.jpg "Model with Generator"
 
 ## Rubric Points
 ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/432/view) individually and describe how I addressed each point in my implementation.  
@@ -40,7 +39,7 @@ python drive.py model.h5
 
 #### 3. Submission code is usable and readable
 
-The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
+The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works. The pipeline does not use a generator since not using a generator using the very same model, with same training data yielded succesful result. This is elaborated in "model architecture and training strategy" section.
 
 ### Model Architecture and Training Strategy
 
@@ -79,12 +78,17 @@ In order to gauge how well the model was working, I split my image and steering 
 ![alt text][image1]
 
 However, for purpose of experimenting, a wider network at one of the fully connected layer was chosen to see if the losses could be further minimized. The training went as shown below.
+
 ![alt text][image2]
 
 To combat the overfitting, I modified the model by introducting a dropout layer between the set of convolutional and the set of fully connected layers. 
 
 The final step was to run the simulator to see how well the car was driving around track one.
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
+
+![alt text][image6]
+
+Note that the final model does not use a generator. While training a model that uses a generator went as below, the vehicle could not succesfully complete track one and drove off the track as depicted [here](https://github.com/sidharth2189/CarND-Behavioral-Cloning-P3/blob/master/video_gen.mp4)
 
 #### 2. Final Model Architecture
 
@@ -107,27 +111,17 @@ model.add(Dense(100,activation='relu'))
 model.add(Dense(10,activation='relu'))
 model.add(Dense(1))
 ```
+![alt text][image3]
 
 #### 3. Creation of the Training Set & Training Process
 
-To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
+I used the udacity training data to input mages to my network. An example image is shown below
 
-![alt text][image2]
-
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
-
-![alt text][image3]
 ![alt text][image4]
+
+To augment the data sat, I flipped images and angles thinking that this would generalize the model. For example, here is an image that has then been flipped:
+
 ![alt text][image5]
-
-Then I repeated this process on track two in order to get more data points.
-
-To augment the data sat, I also flipped images and angles thinking that this would ... For example, here is an image that has then been flipped:
-
-![alt text][image6]
-![alt text][image7]
-
-Etc ....
 
 After the collection process, I had X number of data points. I then preprocessed this data by ...
 
