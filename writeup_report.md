@@ -123,9 +123,11 @@ To augment the data sat, I flipped images and angles thinking that this would ge
 
 ![alt text][image5]
 
-After the collection process, I had X number of data points. I then preprocessed this data by ...
+I also used the left and right camera images in addition along with a corrected steering angle value. (steering correction = 0.2)
+This can help the vehicle recover if off-centred. Further training data of vehicle weaving into the centre from left and right can be added as augmentation.
 
+After the collection process, I had 48216 number of data points. I then preprocessed this data by normalizing. I divided input pixels by 255 and subtracted the values from 0.5 to mean centre to zero.
 
-I finally randomly shuffled the data set and put Y% of the data into a validation set. 
+I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
-I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was Z as evidenced by ... I used an adam optimizer so that manually training the learning rate wasn't necessary.
+I used this training data for training the model. The validation set helped determine if the model was over or under fitting. The ideal number of epochs was 4 since the validation losses did not reduce after that. I used an adam optimizer so that manually training the learning rate wasn't necessary.
