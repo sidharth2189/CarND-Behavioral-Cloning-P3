@@ -126,7 +126,7 @@ To augment the data sat, I flipped images and angles thinking that this would ge
 I also used the left and right camera images in addition along with a corrected steering angle value. (steering correction = 0.2)
 This can help the vehicle recover if off-centred. Further training data of vehicle weaving into the centre from left and right can be added as augmentation.
 
-After the collection process, I had 48216 number of data points. I then preprocessed this data by normalizing. I divided input pixels by 255 and subtracted the values from 0.5 to mean centre to zero.
+After the collection process, I had 48216 number of data points. I then preprocessed this data by normalizing. I divided input pixels by 255 and subtracted the values from 0.5 to mean centre to zero. I converted the images to rgb format since the drive.py file reads rgb and cv2.imread() used in the code reads as BGR.
 
 I finally randomly shuffled the data set and put 20% of the data into a validation set. 
 
