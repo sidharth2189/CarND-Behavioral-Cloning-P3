@@ -86,7 +86,7 @@ To combat the overfitting, I modified the model by introducting a dropout layer 
 The final step was to run the simulator to see how well the car was driving around track one.
 At the end of the process, the vehicle is able to drive autonomously around the track without leaving the road.
 
-Note that the final model does not use a generator. While training the exact same [model](https://github.com/sidharth2189/CarND-Behavioral-Cloning-P3/blob/master/model_gen.py), that uses a generator went as below, the vehicle could not succesfully complete track one and drove off the track as depicted [here](https://github.com/sidharth2189/CarND-Behavioral-Cloning-P3/blob/master/video_gen.mp4).
+Note that the final model does not use a generator. While training the exact same [model](https://github.com/sidharth2189/CarND-Behavioral-Cloning-P3/blob/master/model_gen.py), that uses a generator and same training data, the training went as depicted below. The vehicle could not succesfully complete track one and drove off the track as depicted [here](https://github.com/sidharth2189/CarND-Behavioral-Cloning-P3/blob/master/video_gen.mp4).
 
 ![alt text][image6]
 
